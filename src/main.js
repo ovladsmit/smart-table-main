@@ -54,15 +54,12 @@ function render(action) {
 const sampleTable = initTable({
     tableTemplate: 'table',
     rowTemplate: 'row',
-    before: ['search', 'header', 'filter'],
+    before: ['search','header', 'filter'],
     after: ['pagination']
 }, render);
 
 // @todo: инициализация
-const applySearching = initSearching(
-  sampleTable.search.elements,   
-  'search'                       
-);
+
 
 const applyFiltering = initFiltering(sampleTable.filter.elements, {    // передаём элементы фильтра
     searchBySeller: indexes.sellers                                    // для элемента с именем searchBySeller устанавливаем массив продавцов
@@ -82,7 +79,9 @@ const applySorting = initSorting([        // Нам нужно передать 
     sampleTable.header.elements.sortByDate,
     sampleTable.header.elements.sortByTotal
 ]);
-
+const applySearching = initSearching(
+  'search'                       
+);
 
 const appRoot = document.querySelector('#app');
 appRoot.appendChild(sampleTable.container);
