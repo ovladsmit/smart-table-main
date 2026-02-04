@@ -66,10 +66,18 @@ export function processFormData(formData) {
  * объекты по их уникальному идентификатору с вычислительной сложностью O(1)
  * вместо O(n) при переборе массива.
  */
-export const makeIndex = (arr, field, val) => arr.reduce((acc, cur) => ({
+export const makeIndex = (arr, field, val) => arr.reduce((acc, cur) => ({// ПО СУТИ ФУНКЦИЯ ДОБОВЛЯЮЩАЯ НОМЕРАЦИЮ
     ...acc,  // Копируем все уже накопленные значения
     [cur[field]]: val(cur)  // Добавляем новое поле с именем из cur[field] и значением из val(cur)
 }), {});
+
+/**  acc = { 1: {...} }
+cur = { id: 2, name: "Иван" }
+
+{
+  1: {...},
+  [2]: { id: 2, name: "Иван" }
+}*/
 
 /**
  * Возвращает массив номеров страниц, центрированный вокруг текущей страницы
